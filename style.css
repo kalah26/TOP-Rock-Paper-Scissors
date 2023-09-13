@@ -1,0 +1,73 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+body {
+    color: #fcfcfc;
+    background-color: #001011;
+    font-family: Z003, montserrat, poppins, sans-serif;
+    font-size: 200%;
+}
+
+h1 {
+    background-color: #0d4b504f;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+body, main, .game, .round{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+span {
+    text-align: center;
+}
+
+.game {
+    margin-top: 12px;
+}
+
+.choices {
+    display: flex;
+    padding: 12px;
+}
+
+.weapon {
+    background-color: #0d4b504f;
+    font-size: 75px;
+    margin: 30px;
+    padding: 50px;
+    border-radius: 20%;
+    text-align: center;
+}
+
+.weapon:hover {
+    transform: scale(1.1);
+    border:solid white 5px;
+}
+
+.round, .choices {
+    display: flex;
+}
+
+.choices {
+    justify-content: center;
+    align-items: center;
+}
+
+.computerScore, .playerScore {
+    background-color: #0d4b504f;
+    padding: 10px 20px;
+    margin: 0 20px;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

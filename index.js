@@ -1,5 +1,8 @@
 let computerScore = 0;
 let playerScore = 0;
+const roundResult = document.querySelector('#roundResult');
+const pScore = document.querySelector('.playerScore');
+const cScore = document.querySelector('.computerScore');
 
 //Getting a random choice from the computer by relating each choice to a number from 1 to 3
 function getComputerChoice() {
@@ -20,7 +23,9 @@ function getComputerChoice() {
 }
 
 //Function which plays a single round of rock-paper-scissor
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = getComputerChoice().toLowerCase();
     if ((computerSelection === 'rock') && (playerSelection === 'scissors')) {
         result = "You lose: Scissors is beaten by Rock";
         computerScore++;
@@ -50,22 +55,12 @@ function playRound(playerSelection, computerSelection) {
         playerScore += 0;
         computerScore += 0;
     }
+    roundResult.textContent = result;
+    pScore.textContent = playerScore;
+    cScore.textContent = computerScore;
     return `${result}.\nScore : Computer ${computerScore} - Player ${playerScore}`;
 }
-
-//a function which simulates 5 round for a game
-function game() {  
-    for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice().toLowerCase();
-        const playerSelection = prompt("Make a choice").toLowerCase();
-        console.log(playRound(playerSelection,computerSelection))
-    }
-    if (computerScore > playerScore) {
-        return `You lost the game by ${computerScore} - ${playerScore}`;
-    } else if (computerScore < playerScore) {
-        return `You won the game by ${playerScore} - ${computerScore}`;
-    } else {
-        return `You tied the game`;
-    }
-}
-console.log(game()); 
+const buttons = document.querySelectorAll('button')
+buttons.forEach(button => button.addEventListener('click', function() {
+    console.log(playRound(this.id));
+}))
