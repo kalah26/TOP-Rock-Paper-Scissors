@@ -6,7 +6,7 @@ html {
     box-sizing: inherit;
 }
 
-body {
+body, .button {
     color: #fcfcfc;
     background-color: #001011;
     font-family: Z003, montserrat, poppins, sans-serif;
@@ -48,7 +48,7 @@ span {
     text-align: center;
 }
 
-.weapon:hover {
+.weapon:hover, .button:hover {
     transform: scale(1.1);
     border:solid white 5px;
 }
@@ -71,3 +71,65 @@ span {
     justify-content: center;
     align-items: center;
 }
+
+.button {
+    padding: 12px;
+    border-radius: 25px;
+    background-color: #001011;
+    color: #fcfcfc;
+    font-size: 40px;
+    border-color: #001011;
+}
+
+
+/*For restarting game; curled it from https://github.com/michalosman*/
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--primary-dark);
+    text-align: center;
+    font-size: 30px;
+    user-select: none;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-title {
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .btn-restart {
+    padding: 10px 20px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+  }
+  
+  .overlay.active {
+    display: block;
+  }

@@ -1,8 +1,13 @@
 let computerScore = 0;
 let playerScore = 0;
+const buttons = document.querySelectorAll('button');
 const roundResult = document.querySelector('#roundResult');
 const pScore = document.querySelector('.playerScore');
 const cScore = document.querySelector('.computerScore');
+const overlay = document.querySelector('#overlay');
+const restartButton = document.querySelector('#restartGame');
+const buttn = document.querySelector('#restartBtn');
+const restartMsg = document.querySelector('#restartMsg');
 
 //Getting a random choice from the computer by relating each choice to a number from 1 to 3
 function getComputerChoice() {
@@ -56,11 +61,36 @@ function playRound(playerSelection) {
         computerScore += 0;
     }
     roundResult.textContent = result;
-    pScore.textContent = playerScore;
-    cScore.textContent = computerScore;
-    return `${result}.\nScore : Computer ${computerScore} - Player ${playerScore}`;
+    pScore.textContent = `Player: ${playerScore}`;
+    cScore.textContent = `Computer: ${computerScore}`;
 }
-const buttons = document.querySelectorAll('button')
+
+//resetting the actual game
+function restartGame() {
+    overlay.classList.remove('active');
+    restartButton.classList.remove('active');
+    playerScore = computerScore = 0;
+    pScore.textContent = `Player: 0`;
+    cScore.textContent = `Computer: 0`;
+    roundResult.textContent = "";
+}
+
+//ending the actual game 
+function endGame() {
+    overlay.classList.add('active')
+    restartButton.classList.add('active')
+    if (playerScore > computerScore) {
+        restartMsg.textContent = ' 🎊 You won! 🎊'
+    } else {
+        restartMsg.textContent = '❌ You lost ❌'
+    }
+}
+
 buttons.forEach(button => button.addEventListener('click', function() {
     console.log(playRound(this.id));
+    if (playerScore === 5 || computerScore === 5) {
+        endGame();
+    }
 }))
+
+buttn.addEventListener('click',restartGame)
